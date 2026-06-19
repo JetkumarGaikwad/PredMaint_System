@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbars for a clean technical UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06B6D4; /* Cyan Accent */
+}
+
+/* Oscilloscope CRT-like graph background grid */
+.oscilloscope-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(51, 65, 85, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(51, 65, 85, 0.2) 1px, transparent 1px);
+  background-color: #0F172A;
+  position: relative;
+}
+
+/* Hard rapid alert blinking for critical failures (200ms cycle) */
+@keyframes alert-blink-border {
+  0%, 100% {
+    border-color: #EF4444; /* Red 500 */
+    background-color: rgba(239, 68, 68, 0.08);
+  }
+  50% {
+    border-color: #334155; /* Slate 600 */
+    background-color: transparent;
+  }
+}
+
+.animate-alert-blink {
+  animation: alert-blink-border 0.4s steps(1) infinite;
+}
+
+/* Active click shadow feedback resembling physical toggles */
+.btn-physical:active {
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.8);
+  transform: translateY(1px);
+}
+
+/* Terminal typing effect cursor */
+.terminal-cursor::after {
+  content: "▊";
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Glassmorphic technical overlays */
+.panel-glass {
+  background-color: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid #334155;
+}
